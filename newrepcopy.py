@@ -40,7 +40,7 @@ def process_document(doc_content, second_doc):
                     print("Line:", line_number)
                     print("Page:", page_number)
                     update_paragraph_in_second_doc(second_doc ,line_number, page_number, val1 )
-                    save_document(second_doc, "modified_second_doc.docx")
+                    #save_document(second_doc, "modified_second_doc.docx")
                 else:
                     print("NO")
 
@@ -77,6 +77,11 @@ def process_document(doc_content, second_doc):
         print("Change:", current_change)
         print("Val1:", val1)
         print("Val2:", val2)
+        print("Line:", line_number)
+        print("Page:", page_number)
+        update_paragraph_in_second_doc(second_doc ,line_number, page_number,val1 )
+        
+    save_document(second_doc, "modified_second_doc.docx")
 
 
 def save_document(doc, filename):
@@ -89,9 +94,10 @@ def update_paragraph_in_second_doc(second_doc, line_number, page_number, new_con
 
     # Find the specified paragraph in the second document based on modified Line and Page numbers
     for i, paragraph in enumerate(second_doc.paragraphs):
-        # print(second_doc.paragraphs[i])
+        # print(paragraph.text)
         if i == (int(line_number)-1) : 
             second_doc.paragraphs[i].clear()
+            print("______________________________"+new_content)
             second_doc.paragraphs[i].add_run(f"{new_content}")
         
 
